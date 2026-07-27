@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="progress-fill" id="progress-fill"></div>
+    <div class="setup" id="setup">
+        <input id="work-duration" type="number" placeholder="work duration">
+        <input id="break-duration" type="number" placeholder="break duration">
+        <input id="reps" type="number" placeholder="repetitions">
+        <button onclick="setTimer(workDuration=document.getElementById('work-duration').value, breakDuration=document.getElementById('break-duration').value, reps=document.getElementById('reps').value)">start</button>
+    </div>
+    <div class="timer" id="timer">
+        <h1 id="timer-display">00</h1>
+        <h1 id="phase-display">Work</h1>
+        <h2 id="reps-display">Reps left: 0</h2>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
