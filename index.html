@@ -1,24 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>timer</title>
+    <title>Auto Interval Timer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="progress-fill" id="progress-fill"></div>
-    <div class="setup" id="setup">
-        <input id="work-duration" type="number" placeholder="work duration">
-        <input id="break-duration" type="number" placeholder="break duration">
-        <input id="reps" type="number" placeholder="repetitions">
-        <button onclick="setTimer(workDuration=document.getElementById('work-duration').value, breakDuration=document.getElementById('break-duration').value, reps=document.getElementById('reps').value)">start</button>
+    <div class="bg-overlay"></div>
+
+    <div class="app">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🏁</span>
+                <span class="logo-text">Auto Interval Timer</span>
+            </div>
+            <p class="subtitle">Für echte Auto-Liebhaber – Vollgas im Fokus.</p>
+        </header>
+
+        <main class="content">
+            <section class="setup" id="setup">
+                <h2>Setup</h2>
+                <div class="inputs-row">
+                    <div class="input-group">
+                        <label for="work-duration">Work (Sekunden)</label>
+                        <input id="work-duration" type="number" min="1" placeholder="z.B. 30">
+                    </div>
+                    <div class="input-group">
+                        <label for="break-duration">Break (Sekunden)</label>
+                        <input id="break-duration" type="number" min="1" placeholder="z.B. 15">
+                    </div>
+                    <div class="input-group">
+                        <label for="reps">Runden</label>
+                        <input id="reps" type="number" min="1" placeholder="z.B. 8">
+                    </div>
+                </div>
+
+                <button id="start-btn" class="btn primary">Motor starten</button>
+            </section>
+
+            <section class="timer" id="timer">
+                <div class="dashboard">
+                    <div class="speedometer">
+                        <svg viewBox="0 0 200 100">
+                            <!-- Hintergrundbogen -->
+                            <path d="M10 100 A90 90 0 0 1 190 100"
+                                  class="arc-bg" />
+                            <!-- Fortschrittsbogen -->
+                            <path id="arc-progress"
+                                  d="M10 100 A90 90 0 0 1 190 100"
+                                  class="arc-progress" />
+                        </svg>
+                        <div class="speed-center">
+                            <div id="timer-display" class="speed-value">00</div>
+                            <div class="speed-label">Sekunden</div>
+                        </div>
+                    </div>
+
+                    <div class="info-panel">
+                        <div class="info-row">
+                            <span class="label">Phase:</span>
+                            <span id="phase-display" class="value">Work</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Runden übrig:</span>
+                            <span id="reps-display" class="value">0</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Modus:</span>
+                            <span id="mode-display" class="value">Track Day</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="pause-btn" class="btn secondary">Pause</button>
+                    <button id="resume-btn" class="btn secondary">Weiterfahren</button>
+                    <button id="reset-btn" class="btn danger">Motor stoppen</button>
+                </div>
+
+                <div class="quote" id="quote">
+                    „Volle Konzentration – wie auf der Rennstrecke.“
+                </div>
+            </section>
+        </main>
     </div>
-    <div class="timer" id="timer">
-        <h1 id="timer-display">00</h1>
-        <h1 id="phase-display">Work</h1>
-        <h2 id="reps-display">Reps left: 0</h2>
-    </div>
+
+    <div id="progress-fill"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
